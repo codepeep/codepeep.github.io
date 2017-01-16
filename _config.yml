@@ -1,13 +1,13 @@
 #theme: jekyll-theme-cayman
 # Basic
-title: 冯荣新
+title: 小码吱
 subtitle: 个人站
 description: 感谢来到我的个人站
 # 头像里面的标题
 avatarTitle: codepeep
 # 头像里面的描述
 avatarDesc: PHP / 全栈成长中...
-url: "http://codepeep.coding.me"
+url: "http://codepeep.github.io"
 
 # Comment
 comment:
