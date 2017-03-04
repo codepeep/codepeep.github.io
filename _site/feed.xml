@@ -1,13 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>冯荣新</title>
+    <title>小码吱</title>
     <description>感谢来到我的个人站</description>
-    <link>http://codepeep.coding.me/</link>
-    <atom:link href="http://codepeep.coding.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 16 Jan 2017 16:18:28 +0800</pubDate>
-    <lastBuildDate>Mon, 16 Jan 2017 16:18:28 +0800</lastBuildDate>
+    <link>http://codepeep.github.io/</link>
+    <atom:link href="http://codepeep.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 04 Mar 2017 16:10:15 +0800</pubDate>
+    <lastBuildDate>Sat, 04 Mar 2017 16:10:15 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>本地如何写文章，并发布到Github</title>
+        <description>&lt;h3 id=&quot;jekyll&quot;&gt;启动本地Jekyll&lt;/h3&gt;
+&lt;p&gt;1.到blog所在目录打开git Bash 并 init  &lt;br /&gt;
+2.输入bundle exec jekyll server 启动&lt;/p&gt;
+
+&lt;h3 id=&quot;post&quot;&gt;到目录_POST下啪啪啪写好文章&lt;/h3&gt;
+
+&lt;h3 id=&quot;commitgithub&quot;&gt;commit到Github&lt;/h3&gt;
+&lt;p&gt;1.git commit ‘comment’&lt;br /&gt;
+2.git push origin master&lt;br /&gt;
+3.输入帐号密码&lt;/p&gt;
+
+&lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
+</description>
+        <pubDate>Thu, 02 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://codepeep.github.io/2017/03/commitLog/</link>
+        <guid isPermaLink="true">http://codepeep.github.io/2017/03/commitLog/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>ThinkPHP3.1学习日志-Day01</title>
+        <description>&lt;h3 id=&quot;thinkphp&quot;&gt;ThinkPHP框架学习点：&lt;/h3&gt;
+&lt;p&gt;1.入门&lt;br /&gt;
+2.入口&lt;br /&gt;
+3.配置&lt;br /&gt;
+4.函数和类库&lt;br /&gt;
+5.控制器&lt;br /&gt;
+6.模型&lt;br /&gt;
+7.视图&lt;br /&gt;
+8.模版引擎&lt;br /&gt;
+9.缓存      &lt;br /&gt;
+10.扩展类  &lt;br /&gt;
+11.附录&lt;/p&gt;
+
+&lt;p&gt;其中，第5-8点是学习的重点和核心，其实学习其他优秀的框架主要学习也是类似的这几点&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;入门&lt;/h3&gt;
+&lt;p&gt;1.安装TP框架 &lt;br /&gt;
+2.目录结构 &lt;br /&gt;
+3.命名规范，驼峰式写法，文件夹命名的话TP自己生成的不用理，自己增加的建议小写 &lt;br /&gt;
+4.MVC开发模式 &lt;br /&gt;
+	1)M model(Model类)&lt;br /&gt;
+	2)V view(视图-模版)&lt;br /&gt;
+	3)C controller(控制器)&lt;/p&gt;
+
+&lt;p&gt;5.开发流程&lt;br /&gt;
+体验mvc开发模式&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;入口&lt;/h3&gt;
+&lt;p&gt;1.url与模块和方法的关系&lt;br /&gt;
+http://localhost/index.php/Index/index&lt;br /&gt;
+http://localhost/index.php?m=Index&amp;amp;a=index&lt;br /&gt;
+1)index.php 文件入口&lt;br /&gt;
+2)Index 	模版类文件&lt;br /&gt;
+3)Index 	类方法&lt;/p&gt;
+
+&lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
+</description>
+        <pubDate>Thu, 02 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://codepeep.github.io/2017/03/ThinkPHP-Day01/</link>
+        <guid isPermaLink="true">http://codepeep.github.io/2017/03/ThinkPHP-Day01/</guid>
+        
+        <category>Thinkphp</category>
+        
+        
+      </item>
     
       <item>
         <title>Hello Codepeep’s Journey</title>
@@ -19,10 +91,345 @@
 &lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.coding.me&quot;&gt;http://codepeep.coding.me&lt;/a&gt; 谢谢！&lt;/p&gt;
 </description>
         <pubDate>Mon, 16 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://codepeep.coding.me/2017/01/Hello-Codepeep-s-Journey/</link>
-        <guid isPermaLink="true">http://codepeep.coding.me/2017/01/Hello-Codepeep-s-Journey/</guid>
+        <link>http://codepeep.github.io/2017/01/Hello-Codepeep-s-Journey/</link>
+        <guid isPermaLink="true">http://codepeep.github.io/2017/01/Hello-Codepeep-s-Journey/</guid>
         
         <category>博客</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Markdown语法</title>
+        <description>&lt;h1 id=&quot;markdown-&quot;&gt;Markdown 常用语法及示例&lt;/h1&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;1. 斜体和粗体&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 * 和 ** 表示斜体和粗体。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;这是 *斜体*，这是 **粗体**。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这是 &lt;em&gt;斜体&lt;/em&gt;，这是 &lt;strong&gt;粗体&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;2. 分级标题&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 === 表示一级标题，使用 — 表示二级标题。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;这是一个一级标题
+============================
+
+这是一个二级标题
+----------------------------
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;这是一个一级标题&lt;/h1&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;这是一个二级标题&lt;/h2&gt;
+
+&lt;p&gt;你也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;3. 外链接&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 [描述](链接地址) 为文字增加外链接。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;这是去往 [本人博客](http://codepeep.github.io) 的链接。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这是去往 &lt;a href=&quot;http://codepeep.github.io&quot;&gt;本人博客&lt;/a&gt; 的链接。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;4. 无序列表&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 *，+，- 表示无序列表。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- 无序列表项 一
+- 无序列表项 二
+- 无序列表项 三
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;无序列表项 一&lt;/li&gt;
+  &lt;li&gt;无序列表项 二&lt;/li&gt;
+  &lt;li&gt;无序列表项 三&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;5. 有序列表&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用数字和点表示有序列表。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. 有序列表项 一
+2. 有序列表项 二
+3. 有序列表项 三
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;有序列表项 一&lt;/li&gt;
+  &lt;li&gt;有序列表项 二&lt;/li&gt;
+  &lt;li&gt;有序列表项 三&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-7&quot;&gt;6. 文字引用&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 &amp;gt; 表示文字引用。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; 野火烧不尽，春风吹又生。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;野火烧不尽，春风吹又生。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;7. 行内代码块&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 `代码` 表示行内代码块。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;让我们聊聊 `html`。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;让我们聊聊 &lt;code class=&quot;highlighter-rouge&quot;&gt;html&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-9&quot;&gt;8. 代码块&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 四个缩进空格 表示代码块。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例以及效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;这是一个代码块，此行左侧有四个不可见的空格。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-10&quot;&gt;9. 插入图像&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 ![描述](图片链接地址) 插入图像。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![我的头像](/images/posts/2017-03-04/meinv.jpg)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/2017-03-04/meinv.jpg&quot; alt=&quot;我的头像&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-11&quot;&gt;10. 加强的代码块&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;支持四十一种编程语言的语法高亮的显示，行号显示。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例1：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```cmd
+$ sudo apt-get install vim-gnome
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果1：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd
+$ sudo apt-get install vim-gnome
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-12&quot;&gt;11. 表格支持&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| 项目        | 价格   |  数量  |
+| --------   | -----:  | :----:  |
+| 计算机     | \$1600 |   5     |
+| 手机        |   \$12   |   12   |
+| 管线        |    \$1    |  234  |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;项目&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;价格&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;数量&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;计算机&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$1600&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;手机&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;管线&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;234&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;html-&quot;&gt;12. Html 标签&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;用 Html 写一个纵跨两行的表格：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;table&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;th rowspan=&quot;2&quot;&amp;gt;值班人员&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;星期一&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;星期二&amp;lt;/th&amp;gt;
+        &amp;lt;th&amp;gt;星期三&amp;lt;/th&amp;gt;
+    &amp;lt;/tr&amp;gt;
+    &amp;lt;tr&amp;gt;
+        &amp;lt;td&amp;gt;李强&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;张明&amp;lt;/td&amp;gt;
+        &amp;lt;td&amp;gt;王平&amp;lt;/td&amp;gt;
+    &amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan=&quot;2&quot;&gt;值班人员&lt;/th&gt;
+        &lt;th&gt;星期一&lt;/th&gt;
+        &lt;th&gt;星期二&lt;/th&gt;
+        &lt;th&gt;星期三&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;李强&lt;/td&gt;
+        &lt;td&gt;张明&lt;/td&gt;
+        &lt;td&gt;王平&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 21 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://codepeep.github.io/2016/11/markdownGranmar/</link>
+        <guid isPermaLink="true">http://codepeep.github.io/2016/11/markdownGranmar/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Markdown工具集</title>
+        <description>&lt;h3 id=&quot;markdown&quot;&gt;什么是 Markdown&lt;/h3&gt;
+
+&lt;p&gt;　　Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：如您正在阅读的这篇文章。它使用简单的符号标记不同的标题，分割不同的段落，&lt;strong&gt;粗体&lt;/strong&gt; 或者 &lt;em&gt;斜体&lt;/em&gt; 某些文字.&lt;/p&gt;
+
+&lt;p&gt;　　很多产品的文档也是用markdown编写的，并且以“README.MD”的文件名保存在软件的目录下面。             &lt;br /&gt;
+　　&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;一些基本语法&lt;/h3&gt;
+
+&lt;p&gt;标题          &lt;br /&gt;
+H1 :# Header 1          &lt;br /&gt;
+H2 :## Header 2         &lt;br /&gt;
+H3 :### Header 3         &lt;br /&gt;
+H4 :#### Header 4         &lt;br /&gt;
+H5 :##### Header 5          &lt;br /&gt;
+H6 :###### Header 6    &lt;br /&gt;
+链接 :&lt;a href=&quot;URL&quot;&gt;Title&lt;/a&gt;      &lt;br /&gt;
+加粗 :&lt;strong&gt;Bold&lt;/strong&gt;      &lt;br /&gt;
+斜体字 :&lt;em&gt;Italics&lt;/em&gt;       &lt;br /&gt;
+&lt;em&gt;删除线 :~~text~~        &lt;br /&gt;
+段落 : 段落之间空一行         &lt;br /&gt;
+换行符 : 一行结束时输入两个空格         &lt;br /&gt;
+列表 :&lt;/em&gt; 添加星号成为一个新的列表项。        &lt;br /&gt;
+引用 :&amp;gt; 引用内容             &lt;br /&gt;
+内嵌代码 : &lt;code class=&quot;highlighter-rouge&quot;&gt;alert(&#39;Hello World&#39;);&lt;/code&gt;      &lt;br /&gt;
+画水平线 (HR) :——–&lt;/p&gt;
+
+&lt;p&gt;css 的大部分语法同样可以在 markdown 上使用，但不同的渲染器渲染出来的 markdown 内容样式也不一样，下面这些链接里面有 markdown 基本语法，你也可以在下面几个平台上尝试着写一些。&lt;/p&gt;
+
+&lt;h3 id=&quot;markdown-&quot;&gt;一些好用的 Markdown 编辑器&lt;/h3&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.zybuluo.com/cmd/?utm_source=mindstore.io&quot;&gt;Cmd Markdown&lt;/a&gt; 作业部落在线 Markdown 编辑器推出桌面版客户端啦，全平台支援。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/markdown/image3.png&quot; alt=&quot;&quot; /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://mahua.jser.me/?utm_source=mindstore.io&quot;&gt;MaHua&lt;/a&gt; 在线 Markdown 编辑器 ,无须测试。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/markdown/image1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://mdp.tylingsoft.com/&quot;&gt;Markdown Plus&lt;/a&gt; 一款 Markdown 编辑器，可以支持添加任务列表、emoji、流程图等。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/markdown/image2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/MacDownApp/macdown&quot;&gt;Macdown&lt;/a&gt; Github 上开源的 Mac 平台上的 Markdown 编辑器&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.gitbook.com/editor?utm_source=mindstore.io&quot;&gt;GitBook Editor&lt;/a&gt; 一款团队在线编辑文档工具。可以轻松书写笔记，支持团队协同编辑。同时支持 Markdown 语法，还保持了印象笔记的风格并可在线预览。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.glamdevelopment.com/outlinely?utm_source=mindstore.io&quot;&gt;Outlinely&lt;/a&gt; 界面简洁大方的大纲类 Mac 软件，使用起来很简单，而且支持输出 Markdown 格式。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://classeur.io/?utm_source=mindstore.io&quot;&gt;Classeur&lt;/a&gt; 实用简洁的 Markdown 写作工具，快速上手。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/geekcompany/DeerResume?utm_source=mindstore.io&quot;&gt;DeerResume&lt;/a&gt; 程序员专用 MarkDown 简历制作在线工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 20 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://codepeep.github.io/2016/11/markdownTool/</link>
+        <guid isPermaLink="true">http://codepeep.github.io/2016/11/markdownTool/</guid>
+        
+        <category>工具</category>
         
         
       </item>

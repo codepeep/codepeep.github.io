@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Hello Codepeep’s Journey</title>
-  <meta name="description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。">
+  <title>Markdown语法</title>
+  <meta name="description" content="Markdown 常用语法及示例">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Hello Codepeep’s Journey">
-  <meta name="twitter:description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。">
+  <meta name="twitter:title" content="Markdown语法">
+  <meta name="twitter:description" content="Markdown 常用语法及示例">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Hello Codepeep’s Journey">
-  <meta property="og:description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。">
+  <meta property="og:title" content="Markdown语法">
+  <meta property="og:description" content="Markdown 常用语法及示例">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://codepeep.github.io/2017/01/Hello-Codepeep-s-Journey/">
+  <link rel="canonical" href="http://codepeep.github.io/2016/11/markdownGranmar/">
   <link rel="alternate" type="application/rss+xml" title="小码吱" href="http://codepeep.github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -148,10 +148,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">Hello Codepeep’s Journey</h1>
+    <h1 class="post-title">Markdown语法</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2017-01-16 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-01-16</time>  
+      <time datetime="2016-11-21 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-11-21</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -159,12 +159,251 @@
   </header>
 
   <section class="post">
-    <p>　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。</p>
+    <h1 id="markdown-">Markdown 常用语法及示例</h1>
 
-<h3 id="codepeeps-journey">Codepeep’s Journey：</h3>
-<p><img src="/images/posts/2017-01-16/1.jpg" alt="" /></p>
+<h3 id="section">1. 斜体和粗体</h3>
 
-<p>转载请注明原地址，codepeep的博客：<a href="http://codepeep.coding.me">http://codepeep.coding.me</a> 谢谢！</p>
+<p><strong>语法说明：</strong>使用 * 和 ** 表示斜体和粗体。</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>这是 *斜体*，这是 **粗体**。
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<p>这是 <em>斜体</em>，这是 <strong>粗体</strong>。</p>
+
+<h3 id="section-1">2. 分级标题</h3>
+
+<p><strong>语法说明：</strong>使用 === 表示一级标题，使用 — 表示二级标题。</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>这是一个一级标题
+============================
+
+这是一个二级标题
+----------------------------
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<h1 id="section-2">这是一个一级标题</h1>
+
+<h2 id="section-3">这是一个二级标题</h2>
+
+<p>你也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。</p>
+
+<h3 id="section-4">3. 外链接</h3>
+
+<p><strong>语法说明：</strong>使用 [描述](链接地址) 为文字增加外链接。</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>这是去往 [本人博客](http://codepeep.github.io) 的链接。
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<p>这是去往 <a href="http://codepeep.github.io">本人博客</a> 的链接。</p>
+
+<h3 id="section-5">4. 无序列表</h3>
+
+<p><strong>语法说明：</strong>使用 *，+，- 表示无序列表。</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- 无序列表项 一
+- 无序列表项 二
+- 无序列表项 三
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<ul>
+  <li>无序列表项 一</li>
+  <li>无序列表项 二</li>
+  <li>无序列表项 三</li>
+</ul>
+
+<h3 id="section-6">5. 有序列表</h3>
+
+<p><strong>语法说明：</strong>使用数字和点表示有序列表。</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1. 有序列表项 一
+2. 有序列表项 二
+3. 有序列表项 三
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<ol>
+  <li>有序列表项 一</li>
+  <li>有序列表项 二</li>
+  <li>有序列表项 三</li>
+</ol>
+
+<h3 id="section-7">6. 文字引用</h3>
+
+<p><strong>语法说明：</strong>使用 &gt; 表示文字引用。</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; 野火烧不尽，春风吹又生。
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<blockquote>
+  <p>野火烧不尽，春风吹又生。</p>
+</blockquote>
+
+<h3 id="section-8">7. 行内代码块</h3>
+
+<p><strong>语法说明：</strong>使用 `代码` 表示行内代码块。</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>让我们聊聊 `html`。
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<p>让我们聊聊 <code class="highlighter-rouge">html</code>。</p>
+
+<h3 id="section-9">8. 代码块</h3>
+
+<p><strong>语法说明：</strong>使用 四个缩进空格 表示代码块。</p>
+
+<p><strong>写法示例以及效果：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>这是一个代码块，此行左侧有四个不可见的空格。
+</code></pre>
+</div>
+
+<h3 id="section-10">9. 插入图像</h3>
+
+<p><strong>语法说明：</strong>使用 ![描述](图片链接地址) 插入图像。</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>![我的头像](/images/posts/2017-03-04/meinv.jpg)
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<p><img src="/images/posts/2017-03-04/meinv.jpg" alt="我的头像" /></p>
+
+<h3 id="section-11">10. 加强的代码块</h3>
+
+<p><strong>语法说明：</strong>支持四十一种编程语言的语法高亮的显示，行号显示。</p>
+
+<p><strong>写法示例1：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>```cmd
+$ sudo apt-get install vim-gnome
+```
+</code></pre>
+</div>
+
+<p><strong>效果1：</strong></p>
+
+<p><code class="highlighter-rouge">cmd
+$ sudo apt-get install vim-gnome
+</code></p>
+
+<h3 id="section-12">11. 表格支持</h3>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>| 项目        | 价格   |  数量  |
+| --------   | -----:  | :----:  |
+| 计算机     | \$1600 |   5     |
+| 手机        |   \$12   |   12   |
+| 管线        |    \$1    |  234  |
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>项目</th>
+      <th style="text-align: right">价格</th>
+      <th style="text-align: center">数量</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>计算机</td>
+      <td style="text-align: right">$1600</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td>手机</td>
+      <td style="text-align: right">$12</td>
+      <td style="text-align: center">12</td>
+    </tr>
+    <tr>
+      <td>管线</td>
+      <td style="text-align: right">$1</td>
+      <td style="text-align: center">234</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="html-">12. Html 标签</h3>
+
+<p><strong>语法说明：</strong>用 Html 写一个纵跨两行的表格：</p>
+
+<p><strong>写法示例：</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan="2"&gt;值班人员&lt;/th&gt;
+        &lt;th&gt;星期一&lt;/th&gt;
+        &lt;th&gt;星期二&lt;/th&gt;
+        &lt;th&gt;星期三&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;李强&lt;/td&gt;
+        &lt;td&gt;张明&lt;/td&gt;
+        &lt;td&gt;王平&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+</div>
+
+<p><strong>效果：</strong></p>
+
+<table>
+    <tr>
+        <th rowspan="2">值班人员</th>
+        <th>星期一</th>
+        <th>星期二</th>
+        <th>星期三</th>
+    </tr>
+    <tr>
+        <td>李强</td>
+        <td>张明</td>
+        <td>王平</td>
+    </tr>
+</table>
+
+<p>转载请注明原地址，codepeep的博客：<a href="http://codepeep.github.io">http://codepeep.github.io</a> 谢谢！</p>
+
 
 
   </section>
@@ -174,13 +413,13 @@
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2016/11/markdownGranmar/" data-toggle="tooltip" data-placement="top" title="Markdown语法">上一篇：  <span>Markdown语法</span>
+            <a href="/2016/11/markdownTool/" data-toggle="tooltip" data-placement="top" title="Markdown工具集">上一篇：  <span>Markdown工具集</span>
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2017/03/ThinkPHP-Day01/" data-toggle="tooltip" data-placement="top" title="ThinkPHP3.1学习日志-Day01">下一篇：  <span>ThinkPHP3.1学习日志-Day01</span>
+            <a href="/2017/01/Hello-Codepeep-s-Journey/" data-toggle="tooltip" data-placement="top" title="Hello Codepeep’s Journey">下一篇：  <span>Hello Codepeep’s Journey</span>
             </a>
         </li>
         
@@ -190,7 +429,7 @@
 <section class="post-comments">
 
   
-    <div class="ds-thread" data-thread-key="/2017/01/Hello-Codepeep-s-Journey/" data-title="Hello Codepeep’s Journey" data-url="http://codepeep.github.io/2017/01/Hello-Codepeep-s-Journey/"></div>
+    <div class="ds-thread" data-thread-key="/2016/11/markdownGranmar/" data-title="Markdown语法" data-url="http://codepeep.github.io/2016/11/markdownGranmar/"></div>
 
     <script type="text/javascript">
         var duoshuoQuery = {short_name:"codepeep"};

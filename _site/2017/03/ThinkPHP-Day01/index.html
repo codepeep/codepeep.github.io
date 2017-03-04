@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Hello Codepeep’s Journey</title>
-  <meta name="description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。">
+  <title>ThinkPHP3.1学习日志-Day01</title>
+  <meta name="description" content="ThinkPHP框架学习点：1.入门2.入口3.配置4.函数和类库5.控制器6.模型7.视图8.模版引擎9.缓存      10.扩展类  11.附录">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Hello Codepeep’s Journey">
-  <meta name="twitter:description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。">
+  <meta name="twitter:title" content="ThinkPHP3.1学习日志-Day01">
+  <meta name="twitter:description" content="ThinkPHP框架学习点：1.入门2.入口3.配置4.函数和类库5.控制器6.模型7.视图8.模版引擎9.缓存      10.扩展类  11.附录">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Hello Codepeep’s Journey">
-  <meta property="og:description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。">
+  <meta property="og:title" content="ThinkPHP3.1学习日志-Day01">
+  <meta property="og:description" content="ThinkPHP框架学习点：1.入门2.入口3.配置4.函数和类库5.控制器6.模型7.视图8.模版引擎9.缓存      10.扩展类  11.附录">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://codepeep.github.io/2017/01/Hello-Codepeep-s-Journey/">
+  <link rel="canonical" href="http://codepeep.github.io/2017/03/ThinkPHP-Day01/">
   <link rel="alternate" type="application/rss+xml" title="小码吱" href="http://codepeep.github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -148,10 +148,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">Hello Codepeep’s Journey</h1>
+    <h1 class="post-title">ThinkPHP3.1学习日志-Day01</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2017-01-16 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-01-16</time>  
+      <time datetime="2017-03-02 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-03-02</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -159,12 +159,42 @@
   </header>
 
   <section class="post">
-    <p>　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。</p>
+    <h3 id="thinkphp">ThinkPHP框架学习点：</h3>
+<p>1.入门<br />
+2.入口<br />
+3.配置<br />
+4.函数和类库<br />
+5.控制器<br />
+6.模型<br />
+7.视图<br />
+8.模版引擎<br />
+9.缓存      <br />
+10.扩展类  <br />
+11.附录</p>
 
-<h3 id="codepeeps-journey">Codepeep’s Journey：</h3>
-<p><img src="/images/posts/2017-01-16/1.jpg" alt="" /></p>
+<p>其中，第5-8点是学习的重点和核心，其实学习其他优秀的框架主要学习也是类似的这几点</p>
 
-<p>转载请注明原地址，codepeep的博客：<a href="http://codepeep.coding.me">http://codepeep.coding.me</a> 谢谢！</p>
+<h3 id="section">入门</h3>
+<p>1.安装TP框架 <br />
+2.目录结构 <br />
+3.命名规范，驼峰式写法，文件夹命名的话TP自己生成的不用理，自己增加的建议小写 <br />
+4.MVC开发模式 <br />
+	1)M model(Model类)<br />
+	2)V view(视图-模版)<br />
+	3)C controller(控制器)</p>
+
+<p>5.开发流程<br />
+体验mvc开发模式</p>
+
+<h3 id="section-1">入口</h3>
+<p>1.url与模块和方法的关系<br />
+http://localhost/index.php/Index/index<br />
+http://localhost/index.php?m=Index&amp;a=index<br />
+1)index.php 文件入口<br />
+2)Index 	模版类文件<br />
+3)Index 	类方法</p>
+
+<p>转载请注明原地址，codepeep的博客：<a href="http://codepeep.github.io">http://codepeep.github.io</a> 谢谢！</p>
 
 
   </section>
@@ -174,13 +204,13 @@
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2016/11/markdownGranmar/" data-toggle="tooltip" data-placement="top" title="Markdown语法">上一篇：  <span>Markdown语法</span>
+            <a href="/2017/01/Hello-Codepeep-s-Journey/" data-toggle="tooltip" data-placement="top" title="Hello Codepeep’s Journey">上一篇：  <span>Hello Codepeep’s Journey</span>
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2017/03/ThinkPHP-Day01/" data-toggle="tooltip" data-placement="top" title="ThinkPHP3.1学习日志-Day01">下一篇：  <span>ThinkPHP3.1学习日志-Day01</span>
+            <a href="/2017/03/commitLog/" data-toggle="tooltip" data-placement="top" title="本地如何写文章，并发布到Github">下一篇：  <span>本地如何写文章，并发布到Github</span>
             </a>
         </li>
         
@@ -190,7 +220,7 @@
 <section class="post-comments">
 
   
-    <div class="ds-thread" data-thread-key="/2017/01/Hello-Codepeep-s-Journey/" data-title="Hello Codepeep’s Journey" data-url="http://codepeep.github.io/2017/01/Hello-Codepeep-s-Journey/"></div>
+    <div class="ds-thread" data-thread-key="/2017/03/ThinkPHP-Day01/" data-title="ThinkPHP3.1学习日志-Day01" data-url="http://codepeep.github.io/2017/03/ThinkPHP-Day01/"></div>
 
     <script type="text/javascript">
         var duoshuoQuery = {short_name:"codepeep"};
