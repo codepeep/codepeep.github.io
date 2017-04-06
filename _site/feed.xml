@@ -5,8 +5,8 @@
     <description>感谢来到我的个人站</description>
     <link>http://codepeep.github.io/</link>
     <atom:link href="http://codepeep.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Apr 2017 20:57:02 +0800</pubDate>
-    <lastBuildDate>Thu, 06 Apr 2017 20:57:02 +0800</lastBuildDate>
+    <pubDate>Thu, 06 Apr 2017 21:17:58 +0800</pubDate>
+    <lastBuildDate>Thu, 06 Apr 2017 21:17:58 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
     
       <item>
@@ -211,7 +211,7 @@ use mko2o;
     
       <item>
         <title>Hello Codepeep’s Journey</title>
-        <description>&lt;p&gt;　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，托管于coding平台，我的 Jekyll 是 3.3.1 版本。&lt;/p&gt;
+        <description>&lt;p&gt;　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，我的 Jekyll 是 3.3.1 版本。&lt;/p&gt;
 
 &lt;h3 id=&quot;codepeeps-journey&quot;&gt;Codepeep’s Journey：&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;/images/posts/2017-01-16/1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
