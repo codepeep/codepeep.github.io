@@ -5,8 +5,8 @@
     <description>感谢来到我的个人站</description>
     <link>http://codepeep.github.io/</link>
     <atom:link href="http://codepeep.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Apr 2017 21:17:58 +0800</pubDate>
-    <lastBuildDate>Thu, 06 Apr 2017 21:17:58 +0800</lastBuildDate>
+    <pubDate>Thu, 06 Apr 2017 21:42:34 +0800</pubDate>
+    <lastBuildDate>Thu, 06 Apr 2017 21:42:34 +0800</lastBuildDate>
     <generator>Jekyll v3.1.1</generator>
     
       <item>
@@ -210,6 +210,27 @@ use mko2o;
       </item>
     
       <item>
+        <title>多说评论即将关闭，如何给你的Jekyll加上其他评论，并且支持导入原来的多说评论</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;多说将于2017年6月1日关闭：&lt;/h3&gt;
+&lt;p&gt;多说是一个老牌且深受大家喜爱的评论系统，但因公司业务调整，官方发布公告将于2017年6月1日关闭。&lt;a href=&quot;http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241&quot; target=&quot;_blank&quot;&gt;多说官方公告链接&lt;/a&gt;&lt;br /&gt;
+&lt;img src=&quot;/images/posts/2017-04-06/duoshuo.jpg&quot; alt=&quot;多说关闭公告&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;网易云跟帖，不错的替代评论系统&lt;/h3&gt;
+&lt;p&gt;试了一下好几个评论系统，比如畅言、友言等都不是特别理想，要么不支持原来多说评论导入要么审核严格，经过多次折腾终于找到一款合适的评论系统：网易云跟帖，关键是帮助文档写得很详细，支持的博客系统也很多，比如Wordpress、Z-BLOG、Jekyll、Hexo等，我花了不到5分钟时间就接入成功了，相信大家也能够很快接入的，&lt;a href=&quot;https://gentie.163.com/help.html&quot; target=&quot;_blank&quot;&gt;点击进入网页云跟帖&lt;/a&gt;。效果如下：
+&lt;img src=&quot;/images/posts/2017-04-06/wangyiyungentie.jpg&quot; alt=&quot;网易云跟帖效果图&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
+</description>
+        <pubDate>Mon, 06 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://codepeep.github.io/2017/03/Jekyll-pinglun/</link>
+        <guid isPermaLink="true">http://codepeep.github.io/2017/03/Jekyll-pinglun/</guid>
+        
+        <category>工具</category>
+        
+        
+      </item>
+    
+      <item>
         <title>Hello Codepeep’s Journey</title>
         <description>&lt;p&gt;　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，我的 Jekyll 是 3.3.1 版本。&lt;/p&gt;
 
@@ -222,7 +243,7 @@ use mko2o;
         <link>http://codepeep.github.io/2017/01/hello-codepeep-s-Journey/</link>
         <guid isPermaLink="true">http://codepeep.github.io/2017/01/hello-codepeep-s-Journey/</guid>
         
-        <category>博客</category>
+        <category>其他</category>
         
         
       </item>

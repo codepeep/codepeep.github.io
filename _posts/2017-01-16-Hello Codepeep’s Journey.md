@@ -3,7 +3,7 @@ layout: post
 title: "Hello Codepeep’s Journey"
 date: 2017-01-16 
 description: "codepeep用Jekyll搭建自己的博客，托管于coding平台"
-tag: 博客
+tag: 其他
 ---   
 
 　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，我的 Jekyll 是 3.3.1 版本。  
