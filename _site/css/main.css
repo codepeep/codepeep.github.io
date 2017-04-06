@@ -63,7 +63,7 @@ html {
 
 body {
   font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-  font-size: 14px;
+  font-size: 17px;
   color: #333;
   -webkit-font-smoothing: antialiased; }
 
@@ -76,7 +76,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #00688B; 
+  color: #01AAED; 
 
 }
 p a {
@@ -86,7 +86,7 @@ p a {
 }
 
 a:hover {
-  color: #0000CD;
+  color: #FF5722;
   -o-transition: .5s;
   -ms-transition: .5s;
   -moz-transition: .5s;
@@ -98,7 +98,7 @@ h2,
 h3,
 h4,
 h5,
-h5 {
+h6 {
   margin-top: 1.0em;
   margin-bottom: .5em;
   font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
@@ -145,7 +145,7 @@ p {
   margin-bottom: 10px;
   margin-top: 5px;
   line-height: 1.7em; 
-  padding-left: 20px;
+  /*padding-left: 20px;*/
 }
 
 strong {
@@ -193,9 +193,9 @@ code {
   word-wrap: break-word; }
 
 pre {
-  margin-bottom: 1.3em;
-  padding: 1em 2.5%;
-  background: #e8f2fb;
+  /**margin-bottom: 1.3em;
+  padding: 1em 2.5%;*/
+  background: #363636;
   border: 1px solid #c9e1f6;
   border-radius: 3px;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
@@ -284,13 +284,10 @@ td:last-child {
   color:#404040
 }
 .pager li>a:hover,
-.pager li>a:focus { 
-  color:#fff;
-  background-color:#B9D3EE;
-}
+.pager li>a:focus,
 .pager li>a:hover>span,
-.pager li>a:focus>span{
-  color:#fff;
+.pager li>a:focus>span{ 
+  color:#FF5722;
 }
 ::-moz-selection { 
   color:#fff;
@@ -391,10 +388,10 @@ img::-moz-selection {
 
   .content-wrapper__inner {
     /*margin: 0 10%;*/
-    margin-right: 60px;
+    margin-right: 420px;
     padding: 50px 0; 
     /*margin: 0 auto; */
-    /*width: 700px;*/
+    /*width: 900px;*/
   }
 
   .footer {
@@ -716,7 +713,7 @@ img::-moz-selection {
     display: inline-block;
     margin-right: 0px;
     padding: 5px 5px 5px 5px;
-    font-size: .6em;
+    font-size: .8em;
     text-shadow: none;
     color: #BF1827;
   }

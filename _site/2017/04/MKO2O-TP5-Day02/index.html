@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>ThinkPHP3.1学习日志-Day01</title>
-  <meta name="description" content="ThinkPHP框架学习点：1.入门2.入口3.配置4.函数和类库5.控制器6.模型7.视图8.模版引擎9.缓存      10.扩展类  11.附录">
+  <title>[TP5仿糯米O2O平台]学习日志-Day02</title>
+  <meta name="description" content="今日学习要点：1）仿造糯米网PC端首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面3）配置前后台的TP5控制器和视图，使页面正常访问">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="ThinkPHP3.1学习日志-Day01">
-  <meta name="twitter:description" content="ThinkPHP框架学习点：1.入门2.入口3.配置4.函数和类库5.控制器6.模型7.视图8.模版引擎9.缓存      10.扩展类  11.附录">
+  <meta name="twitter:title" content="[TP5仿糯米O2O平台]学习日志-Day02">
+  <meta name="twitter:description" content="今日学习要点：1）仿造糯米网PC端首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面3）配置前后台的TP5控制器和视图，使页面正常访问">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="ThinkPHP3.1学习日志-Day01">
-  <meta property="og:description" content="ThinkPHP框架学习点：1.入门2.入口3.配置4.函数和类库5.控制器6.模型7.视图8.模版引擎9.缓存      10.扩展类  11.附录">
+  <meta property="og:title" content="[TP5仿糯米O2O平台]学习日志-Day02">
+  <meta property="og:description" content="今日学习要点：1）仿造糯米网PC端首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面3）配置前后台的TP5控制器和视图，使页面正常访问">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://codepeep.github.io/2017/03/ThinkPHP-Day01/">
+  <link rel="canonical" href="http://codepeep.github.io/2017/04/MKO2O-TP5-Day02/">
   <link rel="alternate" type="application/rss+xml" title="小码吱" href="http://codepeep.github.io/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -148,10 +148,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">ThinkPHP3.1学习日志-Day01</h1>
+    <h1 class="post-title">[TP5仿糯米O2O平台]学习日志-Day02</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2017-03-02 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-03-02</time>  
+      <time datetime="2017-04-06 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-06</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -159,40 +159,14 @@
   </header>
 
   <section class="post">
-    <h3 id="thinkphp">ThinkPHP框架学习点：</h3>
-<p>1.入门<br />
-2.入口<br />
-3.配置<br />
-4.函数和类库<br />
-5.控制器<br />
-6.模型<br />
-7.视图<br />
-8.模版引擎<br />
-9.缓存      <br />
-10.扩展类  <br />
-11.附录</p>
+    <h3 id="section">今日学习要点：</h3>
+<p>1）仿造糯米网PC端首页html静态页面<br />
+2）使用H-ui前端框架搭建PC端后台管理html静态页面<br />
+3）配置前后台的TP5控制器和视图，使页面正常访问</p>
 
-<p>其中，第5-8点是学习的重点和核心，其实学习其他优秀的框架主要学习也是类似的这几点</p>
-
-<h3 id="section">入门</h3>
-<p>1.安装TP框架 <br />
-2.目录结构 <br />
-3.命名规范，驼峰式写法，文件夹命名的话TP自己生成的不用理，自己增加的建议小写 <br />
-4.MVC开发模式 <br />
-	1)M model(Model类)<br />
-	2)V view(视图-模版)<br />
-	3)C controller(控制器)</p>
-
-<p>5.开发流程<br />
-体验mvc开发模式</p>
-
-<h3 id="section-1">入口</h3>
-<p>1.url与模块和方法的关系<br />
-http://localhost/index.php/Index/index<br />
-http://localhost/index.php?m=Index&amp;a=index<br />
-1)index.php 文件入口<br />
-2)Index 	模版类文件<br />
-3)Index 	类方法</p>
+<h3 id="pchtml">1、仿造糯米网PC端首页html静态页面</h3>
+<p>仿造html页面的方式非常多，但是主要分为两种方式吧，一是自己写，二是利用仿站工具把相关资源下载，再稍作修改即可。自己写的话对于前端大神来说都是小case，但是对于小白来说那就需要花些时间先学习HTML、CSS、JS和PS相关的基础知识了，关于这些前端知识推荐一个非常好的自学网站：<a href="http://www.imooc.com" target="_blank">慕课网</a>，像我这样的菜鸟就是在慕课网学习的，里面绝大部分视频都是免费的，都是一些大公司的大牛实战经验讲解，而且制作精良。再说第二种方式：用仿站工具，防站工具我用过两款，第一款是大名鼎鼎的<a href="http://pan.baidu.com/s/1eRBa8k6" target="_blank">Teleport Ultra</a>，但是用它下载的html文件会自动加上他自己的一些标签；第二款是国内某个大神写的，叫<a href="http://pan.baidu.com/s/1pLyNknD" target="_blank">仿站绿色小工具</a>，功能比较少，但是简单实用，基本能满足你想把图片、js、css和html一键下载的需求。
+当然如果你的目的是像我一样主要想学习TP5框架，那么我很乐意分享我的前端静态资源，<a href="http://pan.baidu.com/s/1o80Rdhw" target="_blank">猛戳下载呗</a> 。</p>
 
 <p>转载请注明原地址，codepeep的博客：<a href="http://codepeep.github.io">http://codepeep.github.io</a> 谢谢！</p>
 
@@ -204,15 +178,10 @@ http://localhost/index.php?m=Index&amp;a=index<br />
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2017/01/Hello-Codepeep-s-Journey/" data-toggle="tooltip" data-placement="top" title="Hello Codepeep’s Journey">上一篇：  <span>Hello Codepeep’s Journey</span>
+            <a href="/2017/04/MKO2O-TP5-Day01/" data-toggle="tooltip" data-placement="top" title="[TP5仿糯米O2O平台]学习日志-Day01">上一篇：  <span>[TP5仿糯米O2O平台]学习日志-Day01</span>
             </a>
         </li>
         
-        
-        <li class="next">
-            <a href="/2017/03/commitLog/" data-toggle="tooltip" data-placement="top" title="本地如何写文章，并发布到Github">下一篇：  <span>本地如何写文章，并发布到Github</span>
-            </a>
-        </li>
         
     </ul>
 </section>
@@ -220,7 +189,7 @@ http://localhost/index.php?m=Index&amp;a=index<br />
 <section class="post-comments">
 
   
-    <div class="ds-thread" data-thread-key="/2017/03/ThinkPHP-Day01/" data-title="ThinkPHP3.1学习日志-Day01" data-url="http://codepeep.github.io/2017/03/ThinkPHP-Day01/"></div>
+    <div class="ds-thread" data-thread-key="/2017/04/MKO2O-TP5-Day02/" data-title="[TP5仿糯米O2O平台]学习日志-Day02" data-url="http://codepeep.github.io/2017/04/MKO2O-TP5-Day02/"></div>
 
     <script type="text/javascript">
         var duoshuoQuery = {short_name:"codepeep"};
