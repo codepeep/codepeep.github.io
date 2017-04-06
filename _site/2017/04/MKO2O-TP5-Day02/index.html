@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <title>[TP5仿糯米O2O平台]学习日志-Day02</title>
-  <meta name="description" content="今日学习要点：1）仿造糯米网PC端首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面3）配置前后台的TP5控制器和视图，使页面正常访问">
+  <meta name="description" content="今日学习要点：1）仿造糯米网搭建PC端前台首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="[TP5仿糯米O2O平台]学习日志-Day02">
-  <meta name="twitter:description" content="今日学习要点：1）仿造糯米网PC端首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面3）配置前后台的TP5控制器和视图，使页面正常访问">
+  <meta name="twitter:description" content="今日学习要点：1）仿造糯米网搭建PC端前台首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面">
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="[TP5仿糯米O2O平台]学习日志-Day02">
-  <meta property="og:description" content="今日学习要点：1）仿造糯米网PC端首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面3）配置前后台的TP5控制器和视图，使页面正常访问">
+  <meta property="og:description" content="今日学习要点：1）仿造糯米网搭建PC端前台首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -160,13 +160,131 @@
 
   <section class="post">
     <h3 id="section">今日学习要点：</h3>
-<p>1）仿造糯米网PC端首页html静态页面<br />
-2）使用H-ui前端框架搭建PC端后台管理html静态页面<br />
-3）配置前后台的TP5控制器和视图，使页面正常访问</p>
+<p>1）仿造糯米网搭建PC端前台首页html静态页面<br />
+2）使用H-ui前端框架搭建PC端后台管理html静态页面</p>
 
-<h3 id="pchtml">1、仿造糯米网PC端首页html静态页面</h3>
+<h3 id="pchtml">1、仿造糯米网搭建PC端前台首页html静态页面</h3>
 <p>仿造html页面的方式非常多，但是主要分为两种方式吧，一是自己写，二是利用仿站工具把相关资源下载，再稍作修改即可。自己写的话对于前端大神来说都是小case，但是对于小白来说那就需要花些时间先学习HTML、CSS、JS和PS相关的基础知识了，关于这些前端知识推荐一个非常好的自学网站：<a href="http://www.imooc.com" target="_blank">慕课网</a>，像我这样的菜鸟就是在慕课网学习的，里面绝大部分视频都是免费的，都是一些大公司的大牛实战经验讲解，而且制作精良。再说第二种方式：用仿站工具，防站工具我用过两款，第一款是大名鼎鼎的<a href="http://pan.baidu.com/s/1eRBa8k6" target="_blank">Teleport Ultra</a>，但是用它下载的html文件会自动加上他自己的一些标签；第二款是国内某个大神写的，叫<a href="http://pan.baidu.com/s/1pLyNknD" target="_blank">仿站绿色小工具</a>，功能比较少，但是简单实用，基本能满足你想把图片、js、css和html一键下载的需求。
-当然如果你的目的是像我一样主要想学习TP5框架，那么我很乐意分享我的前端静态资源，<a href="http://pan.baidu.com/s/1o80Rdhw" target="_blank">猛戳下载呗</a> 。</p>
+当然如果你的目的是像我一样主要想学习TP5框架，那么我很乐意分享我的前端静态资源，<a href="http://pan.baidu.com/s/1o80Rdhw" target="_blank">猛戳下载呗</a> 。为了熟练使用linux命令，所以我尽可能的使用命令进行文件操作，大家如果习惯直接复制粘贴也可以。</p>
+
+<p>1）项目中目录public/static/下新建前端静态资源文件夹index，并把相关css、image、js复制到所创建的index路径下。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd mko2o/public/static/	/*进入项目规范的静态static路径*/
+mkdir index		/*新建index文件夹，用于存放静态资源*/
+cd 静态资源/前端html模版代码/	/*打开另一个shell，进入静态资源路径*/  
+cp -r css image js /phpStudy/WWW/mko2o/public/static/index/	/*把PC端前台用到的静态资源复制到项目中*/
+</code></pre>
+</div>
+
+<p>2）项目中目录application/下新建PC端前台模块文件夹index，并在index路径下新建控制层controller和视图层view。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd application/  /*进入项目规范的业务模块application路径*/
+mkdir index	/*新建index文件夹，用于实现PC端前台业务*/
+cd index/	/*进入index文件夹*/
+mkdir controller view	/*新建控制层和视图层*/
+cd view/	/*进入视图层*/
+mkdir index public user	/*新建首页视图index，公共视图public，登录视图user文件夹*/
+cd 静态资源/前端html模版代码/	/*打开另一个shell，进入静态资源路径*/
+cp -r index.html /phpStudy/WWW/mko2o/application/index/view/index/	/*把PC端前台首页html复制到对应视图层路径中*/
+cp -r login.html register.html /phpStudy/WWW/mko2o/application/index/view/user/	/*把PC端前台登录注册页的html复制到对应视图层路径中*/
+</code></pre>
+</div>
+
+<p>3）项目中目录application/index/controller/下新建首页Index.php，代码如下。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+namespace app\index\controller;
+use think\Controller;
+
+/**
+ *  前端首页模块
+ */
+class Index extends Controller {
+    public function index(){
+       return $this-&gt;fetch();
+    }
+
+}
+</code></pre>
+</div>
+
+<p>这时候打开浏览器访问http://127.0.0.1/mko2o/public/index/index ，就可以正常访问到PC端前台首页了，效果如下：<br />
+<img src="/images/posts/2017-04-06/pc_first.jpg" alt="TP5仿糯米网O2O系统之PC端前台首页" /></p>
+
+<p>4）项目中目录application/index/controller/下新建用户登录注册User.php，代码如下。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+namespace app\index\controller;
+use think\Controller;
+
+/**
+ *  用户登录注册模块
+ */
+class User extends Controller {
+    public function login(){
+       return $this-&gt;fetch();
+    }
+    public function register(){
+       return $this-&gt;fetch();
+    }
+
+}
+</code></pre>
+</div>
+
+<p>访问http://127.0.0.1/mko2o/public/index/user/login ，就可以正常访问到PC端登录页了，效果如下：<br />
+<img src="/images/posts/2017-04-06/pc_login.jpg" alt="TP5仿糯米网O2O系统之PC端登录页" /></p>
+
+<p>访问http://127.0.0.1/mko2o/public/index/iuser/register ，就可以正常访问到PC端注册页了，效果如下：<br />
+<img src="/images/posts/2017-04-06/pc_register.jpg" alt="TP5仿糯米网O2O系统之PC端注册页" /></p>
+
+<h3 id="h-uipchtml">2、使用H-ui前端框架搭建PC端后台管理html静态页面</h3>
+<p>H-ui是国产的轻量级前端框架，简单免费，兼容性好。你可以选择使用我在静态资源中提供的版本，也可以到<a href="http://www.h-ui.net/H-ui.admin.shtml" target="_blank">H-ui官方网站</a>下载最新的版本H-ui.Admin。接下来就可以开始搭建后台管理页面啦。</p>
+
+<p>1）复制H-ui核心文件到项目static目录下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd public/static/	/*进入项目规范的静态static路径*/
+mkdir admin	/*新建后台静态文件夹admin*/
+cd admin/
+mkdir hui	/*新建H-ui专用静态文件夹hui*/
+cd 静态资源/后端html代码/h-ui开源代码/
+cp -r lib static /phpStudy/WWW/mko2o/public/static/admin/hui/	/*复制H-ui核心文件到项目中*/
+</code></pre>
+</div>
+
+<p>2）项目中目录application/下新建后台管理模块文件夹admin，并在admin路径下新建控制层controller和视图层view。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd application/  /*进入项目规范的业务模块application路径*/
+mkdir admin	/*新建admin文件夹，用于实现后台管理业务*/
+cd admin/	/*进入admin文件夹*/
+mkdir controller view	/*新建控制层和视图层*/
+cd view/	/*进入视图层*/
+mkdir index public	/*新建首页视图index，公共视图public文件夹*/
+cd 静态资源/后端html代码/主后台模板/	/*打开另一个shell，进入静态资源路径*/
+cp -r index public /phpStudy/WWW/mko2o/application/index/view/index/	/*把后台管理首页html复制到对应视图层路径中*/
+</code></pre>
+</div>
+
+<p>3）项目中目录application/admin/controller/下新建后台首页Index.php，代码如下。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+namespace app\admin\controller;
+use think\Controller;
+
+/**
+ *  后台首页模块
+ */
+class Index extends Controller {
+    public function index(){
+       return $this-&gt;fetch();
+    }
+
+}
+</code></pre>
+</div>
+
+<p>这时候打开浏览器访问http://127.0.0.1/mko2o/public/admin/index ，就可以正常访问到后台管理首页了，效果如下：<br />
+<img src="/images/posts/2017-04-06/admin_first.jpg" alt="TP5仿糯米网O2O系统之后台管理首页" /></p>
 
 <p>转载请注明原地址，codepeep的博客：<a href="http://codepeep.github.io">http://codepeep.github.io</a> 谢谢！</p>
 
