@@ -3,19 +3,186 @@
   <channel>
     <title>小码吱</title>
     <description>感谢来到我的个人站</description>
-    <link>http://codepeep.github.io/</link>
-    <atom:link href="http://codepeep.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Apr 2017 21:42:34 +0800</pubDate>
-    <lastBuildDate>Thu, 06 Apr 2017 21:42:34 +0800</lastBuildDate>
-    <generator>Jekyll v3.1.1</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 07 Apr 2017 21:34:40 +0800</pubDate>
+    <lastBuildDate>Fri, 07 Apr 2017 21:34:40 +0800</lastBuildDate>
+    <generator>Jekyll v3.4.0</generator>
     
       <item>
-        <title>[TP5仿糯米O2O平台]学习日志-Day02</title>
-        <description>&lt;h3 id=&quot;section&quot;&gt;今日学习要点：&lt;/h3&gt;
+        <title>[TP5仿糯米O2O平台-Day03]后台生活服务分类模块的实现</title>
+        <description>&lt;h3 id=&quot;今日学习要点&quot;&gt;今日学习要点：&lt;/h3&gt;
+&lt;p&gt;1）分类的添加，并使用validate校验机制&lt;br /&gt;
+2）分页机制处理列表分页功能&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/2017-04-07/fenleitianjia.jpg&quot; alt=&quot;生活服务分类添加效果图&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1生活服务分类的添加&quot;&gt;1、生活服务分类的添加&lt;/h3&gt;
+
+&lt;p&gt;1）大家先复制静态资源中静态资源/后端html代码/主后台模板/category下的html代码到项目路径视图层phpStudy/WWW/mko2o/application/admin/view/category下，其中add.html即为分类添加页面，index.html为分类列表展示页面。&lt;/p&gt;
+
+&lt;p&gt;2）然后在控制层phpStudy/WWW/mko2o/application/admin/controller路径下新建Category.php，并实现模版的加载和业务逻辑代码，代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;?php
+namespace app\admin\controller;
+use think\Controller;
+
+/**
+ *  后台首页模块
+ */
+class Category extends Controller {
+
+    private $obj;
+    public function _initialize(){
+	$this-&amp;gt;obj = model('Category');
+    }
+
+    //分类列表
+    public function index(){
+       $categorys = $this-&amp;gt;obj-&amp;gt;getFirstCategorys();
+       return $this-&amp;gt;fetch('', [
+	   'categorys' =&amp;gt; $categorys
+       ]);
+    }
+
+    //添加分类方法
+    public function add(){
+	$parentId = input('get.parent_id', 0, 'intval');
+	$categorys = $this-&amp;gt;obj-&amp;gt;getNormalFirstCategorys($parentId);
+	return $this-&amp;gt;fetch('', [
+	    'categorys' =&amp;gt; $categorys
+	]);
+    }
+
+    //分类保存方法
+    public function save(){
+	$data = input('post.');
+	$validate = validate('Category');	/*实例化Category校验类*/
+	if(!$validate-&amp;gt;scene('add')-&amp;gt;check($data)){	/*场景校验*/
+	    $this-&amp;gt;error($validate-&amp;gt;getError());	/*校验信息反馈*/
+	}
+	//把$data提交到model层
+	$res = $this-&amp;gt;obj-&amp;gt;add($data);
+	if($res){
+	    $this-&amp;gt;success('新增成功');
+	}
+
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上面的代码是控制层的逻辑，为了实现程序的高度复用了良好的MVC开发模式，我们需要新建对应的Model层用来和数据库打交道，这时候我们可以在phpStudy/WWW/mko2o/application/common/model下新建Category.php的model类，代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;?php
+namespace app\common\model;
+use think\Model;
+/**
+ * 分类model类
+ */
+class Category extends Model
+{
+    public function add($data){
+	$data['status'] = 1;
+	return $this-&amp;gt;save($data);
+    }
+
+    //新增分类页面获取正常一级分类
+    public function getNormalFirstCategorys(){
+	$where = [
+	    'status' =&amp;gt; 1,
+	    'parent_id' =&amp;gt; 0
+	];
+	$order = [
+	    'id' =&amp;gt; 'desc'
+	];
+	$result = $this-&amp;gt;where($where)-&amp;gt;order($order)-&amp;gt;select();
+	return $result;
+    }
+
+    //列表页获取一级分类
+    public function getFirstCategorys($parentId=0){
+	$where = [
+	    'status' =&amp;gt; ['neq', -1],
+	    'parent_id' =&amp;gt; $parentId
+	];
+	$order = [
+	    'id' =&amp;gt; 'desc'
+	];
+	$result = $this-&amp;gt;where($where)-&amp;gt;order($order)-&amp;gt;paginate(2);
+	return $result;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;细心的吱友可能会发现，控制层中的save()方法中实现了TP5自带的validate校验机制，那么这个校验是如何写的呢，TP5官网的详细说明在这里，&lt;a href=&quot;http://www.kancloud.cn/manual/thinkphp5/129322&quot; target=&quot;_blank&quot;&gt;TP5校验&lt;/a&gt;，我这边是在phpStudy/WWW/mko2o/application/admin/validate/下新建Category.php验证类，具体的实现代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;?php
+namespace app\admin\validate;
+use think\Validate;
+/**
+ * Desc:Category验证类
+ */
+class Category extends Validate{
+
+    /**规则设置**/
+    protected $rule = [
+	['name', 'require|max:50', '分类名必须填写|分类名不能超过50个字符'],
+	['parent_id', 'number'],
+	['id', 'number'],
+	['status', 'number|in:-1,0,1', '状态必须是数字|状态范围不合法'],
+	['listorder','number']
+    ];
+
+    /**场景设置**/
+    protected $scene = [
+	'add' =&amp;gt; ['name', 'parent_id'],//添加
+	'listorder' =&amp;gt; ['id', 'parent_id']//排序
+    ];
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;2分页机制处理列表分页功能&quot;&gt;2、分页机制处理列表分页功能&lt;/h3&gt;
+&lt;p&gt;分类机制的实现是用paginate()代替select()，方法即可，然后html页面中调用render()，例如我是在index.html中增加一个div，美化样式，然后div里面填充$categorys-&amp;gt;render()；具体的代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div class=&quot;cl pd-5 bg-1 bk-gray mt-20 tp-fenye&quot;&amp;gt;{$categorys-&amp;gt;render()}&amp;lt;/div&amp;gt;
+
+.tp-fenye .pagination li{
+    display: inline;
+    padding: 10px;
+}
+.pagination .active{
+    color: red;
+}
+.pagination .disabled{
+    color: #888888;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/04/mko2o-tp5-day03/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/mko2o-tp5-day03/</guid>
+        
+        <category>TP5</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>[TP5仿糯米O2O平台-Day02]前端页面模块和后台页面模块的搭建</title>
+        <description>&lt;h3 id=&quot;今日学习要点&quot;&gt;今日学习要点：&lt;/h3&gt;
 &lt;p&gt;1）仿造糯米网搭建PC端前台首页html静态页面&lt;br /&gt;
 2）使用H-ui前端框架搭建PC端后台管理html静态页面&lt;/p&gt;
 
-&lt;h3 id=&quot;pchtml&quot;&gt;1、仿造糯米网搭建PC端前台首页html静态页面&lt;/h3&gt;
+&lt;h3 id=&quot;1仿造糯米网搭建pc端前台首页html静态页面&quot;&gt;1、仿造糯米网搭建PC端前台首页html静态页面&lt;/h3&gt;
 &lt;p&gt;仿造html页面的方式非常多，但是主要分为两种方式吧，一是自己写，二是利用仿站工具把相关资源下载，再稍作修改即可。自己写的话对于前端大神来说都是小case，但是对于小白来说那就需要花些时间先学习HTML、CSS、JS和PS相关的基础知识了，关于这些前端知识推荐一个非常好的自学网站：&lt;a href=&quot;http://www.imooc.com&quot; target=&quot;_blank&quot;&gt;慕课网&lt;/a&gt;，像我这样的菜鸟就是在慕课网学习的，里面绝大部分视频都是免费的，都是一些大公司的大牛实战经验讲解，而且制作精良。再说第二种方式：用仿站工具，防站工具我用过两款，第一款是大名鼎鼎的&lt;a href=&quot;http://pan.baidu.com/s/1eRBa8k6&quot; target=&quot;_blank&quot;&gt;Teleport Ultra&lt;/a&gt;，但是用它下载的html文件会自动加上他自己的一些标签；第二款是国内某个大神写的，叫&lt;a href=&quot;http://pan.baidu.com/s/1pLyNknD&quot; target=&quot;_blank&quot;&gt;仿站绿色小工具&lt;/a&gt;，功能比较少，但是简单实用，基本能满足你想把图片、js、css和html一键下载的需求。
 当然如果你的目的是像我一样主要想学习TP5框架，那么我很乐意分享我的前端静态资源，&lt;a href=&quot;http://pan.baidu.com/s/1o80Rdhw&quot; target=&quot;_blank&quot;&gt;猛戳下载呗&lt;/a&gt; 。为了熟练使用linux命令，所以我尽可能的使用命令进行文件操作，大家如果习惯直接复制粘贴也可以。&lt;/p&gt;
 
@@ -90,7 +257,7 @@ class User extends Controller {
 &lt;p&gt;访问http://127.0.0.1/mko2o/public/index/iuser/register ，就可以正常访问到PC端注册页了，效果如下：&lt;br /&gt;
 &lt;img src=&quot;/images/posts/2017-04-06/pc_register.jpg&quot; alt=&quot;TP5仿糯米网O2O系统之PC端注册页&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;h-uipchtml&quot;&gt;2、使用H-ui前端框架搭建PC端后台管理html静态页面&lt;/h3&gt;
+&lt;h3 id=&quot;2使用h-ui前端框架搭建pc端后台管理html静态页面&quot;&gt;2、使用H-ui前端框架搭建PC端后台管理html静态页面&lt;/h3&gt;
 &lt;p&gt;H-ui是国产的轻量级前端框架，简单免费，兼容性好。你可以选择使用我在静态资源中提供的版本，也可以到&lt;a href=&quot;http://www.h-ui.net/H-ui.admin.shtml&quot; target=&quot;_blank&quot;&gt;H-ui官方网站&lt;/a&gt;下载最新的版本H-ui.Admin。接下来就可以开始搭建后台管理页面啦。&lt;/p&gt;
 
 &lt;p&gt;1）复制H-ui核心文件到项目static目录下&lt;/p&gt;
@@ -141,8 +308,8 @@ class Index extends Controller {
 &lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
 </description>
         <pubDate>Thu, 06 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://codepeep.github.io/2017/04/mko2o-tp5-day02/</link>
-        <guid isPermaLink="true">http://codepeep.github.io/2017/04/mko2o-tp5-day02/</guid>
+        <link>http://localhost:4000/2017/04/mko2o-tp5-day02/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/mko2o-tp5-day02/</guid>
         
         <category>TP5</category>
         
@@ -150,21 +317,21 @@ class Index extends Controller {
       </item>
     
       <item>
-        <title>[TP5仿糯米O2O平台]学习日志-Day01</title>
-        <description>&lt;h3 id=&quot;section&quot;&gt;写在前面&lt;/h3&gt;
+        <title>[TP5仿糯米O2O平台-Day01]功能分析和表的设计</title>
+        <description>&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
 &lt;p&gt;ThinkPHP是一个免费开源的，快速、简单的面向对象的轻量级PHP开发框架，是为了敏捷WEB应用开发和简化企业应用开发而诞生的。ThinkPHP从诞生以来一直秉承简洁实用的设计原则，在保持出色的性能和至简的代码的同时，也注重易用性。遵循Apache2开源许可协议发布，意味着你可以免费使用ThinkPHP，甚至允许把你基于ThinkPHP开发的应用开源或商业产品发布/销售。&lt;br /&gt;
 ThinkPHP5.0版本是一个颠覆和重构版本，采用全新的架构思想，引入了更多的PHP新特性，优化了核心，减少了依赖，实现了真正的惰性加载，支持composer，并针对API开发做了大量的优化，无论是WEB还是API开发都是国产框架的首选。&lt;br /&gt;
 基于以上两个官方介绍，并且详细了解了文档教程之后的，我决定选择TP5作为入门学习的框架。但是既然是菜鸟，选了框架看了文档得有实战大牛带路才靠谱啊是吧，恰好这时候慕课网的singwa老师发布了第一套TP5的实战课程，而且是仿糯米网的O2O系统，看了视频简介和章节后果断入手，听了一遍发现实在太适合我了，课程地址为&lt;a href=&quot;http://coding.imooc.com/learn/list/85.html&quot; target=&quot;_blank&quot;&gt;高富帅传送门&lt;/a&gt;。此学习日志系列就是基于此次实战的个人总结，希望对自己的知识积累能够更好的沉淀，也顺便开启我的个人博客之路吧！欢迎留言，共同学习，走上人生巅峰！&lt;/p&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;今日学习要点：&lt;/h3&gt;
+&lt;h3 id=&quot;今日学习要点&quot;&gt;今日学习要点：&lt;/h3&gt;
 &lt;p&gt;1）使用XMind 8 设计系统功能的思维导图&lt;br /&gt;
 2）Mysql数据库表的设计并创建数据库&lt;/p&gt;
 
-&lt;h3 id=&quot;xmind-8-&quot;&gt;1、使用XMind 8 设计系统功能的思维导图&lt;/h3&gt;
+&lt;h3 id=&quot;1使用xmind-8-设计系统功能的思维导图&quot;&gt;1、使用XMind 8 设计系统功能的思维导图&lt;/h3&gt;
 &lt;p&gt;XMind简介：XMind 是一款非常实用的思维导图软件，包括思维管理、商务演示、与办公软件协同工作等功能。它不仅可以绘制思维导图，还能绘制鱼骨图、二维图、树形图、逻辑图、组织结构图等，而我们程序猿经常需要用它来进行程序功能结构图的设计，能够促进我们模块化的开发程序，并且思路清晰，也可以导出图片、PDF等多种格式的文件。XMind 8 官网&lt;a href=&quot;http://www.xmindchina.net/xiazai.html&quot; target=&quot;_blank&quot;&gt;下载地址&lt;/a&gt;。下图是本次TP5仿糯米O2O平台的功能分析思维导图。&lt;br /&gt;
 &lt;img src=&quot;/images/posts/2017-04-05/mko2o.png&quot; alt=&quot;MKO2O系统思维导图&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;mysql&quot;&gt;2、Mysql数据库表的设计并创建数据库&lt;/h3&gt;
+&lt;h3 id=&quot;2mysql数据库表的设计并创建数据库&quot;&gt;2、Mysql数据库表的设计并创建数据库&lt;/h3&gt;
 &lt;p&gt;我们这个项目使用的数据库是Mysql5.6，大家可以自行下载即可。根据思维导图的详细分析，初步需要设计9个表，分别为：&lt;br /&gt;
 1）服务分类表(o2o_category)&lt;br /&gt;
 2）城市表(o2o_city)&lt;br /&gt;
@@ -201,8 +368,8 @@ use mko2o;
 &lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
 </description>
         <pubDate>Wed, 05 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://codepeep.github.io/2017/04/mko2o-tp5-day01/</link>
-        <guid isPermaLink="true">http://codepeep.github.io/2017/04/mko2o-tp5-day01/</guid>
+        <link>http://localhost:4000/2017/04/mko2o-tp5-day01/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/mko2o-tp5-day01/</guid>
         
         <category>TP5</category>
         
@@ -211,19 +378,19 @@ use mko2o;
     
       <item>
         <title>多说评论即将关闭，如何给你的Jekyll加上其他评论，并且支持导入原来的多说评论</title>
-        <description>&lt;h3 id=&quot;section&quot;&gt;多说将于2017年6月1日关闭：&lt;/h3&gt;
+        <description>&lt;h3 id=&quot;多说将于2017年6月1日关闭&quot;&gt;多说将于2017年6月1日关闭：&lt;/h3&gt;
 &lt;p&gt;多说是一个老牌且深受大家喜爱的评论系统，但因公司业务调整，官方发布公告将于2017年6月1日关闭。&lt;a href=&quot;http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241&quot; target=&quot;_blank&quot;&gt;多说官方公告链接&lt;/a&gt;&lt;br /&gt;
 &lt;img src=&quot;/images/posts/2017-04-06/duoshuo.jpg&quot; alt=&quot;多说关闭公告&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;网易云跟帖，不错的替代评论系统&lt;/h3&gt;
+&lt;h3 id=&quot;网易云跟帖不错的替代评论系统&quot;&gt;网易云跟帖，不错的替代评论系统&lt;/h3&gt;
 &lt;p&gt;试了一下好几个评论系统，比如畅言、友言等都不是特别理想，要么不支持原来多说评论导入要么审核严格，经过多次折腾终于找到一款合适的评论系统：网易云跟帖，关键是帮助文档写得很详细，支持的博客系统也很多，比如Wordpress、Z-BLOG、Jekyll、Hexo等，我花了不到5分钟时间就接入成功了，相信大家也能够很快接入的，&lt;a href=&quot;https://gentie.163.com/help.html&quot; target=&quot;_blank&quot;&gt;点击进入网页云跟帖&lt;/a&gt;。效果如下：
 &lt;img src=&quot;/images/posts/2017-04-06/wangyiyungentie.jpg&quot; alt=&quot;网易云跟帖效果图&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.github.io&quot;&gt;http://codepeep.github.io&lt;/a&gt; 谢谢！&lt;/p&gt;
 </description>
         <pubDate>Mon, 06 Mar 2017 00:00:00 +0800</pubDate>
-        <link>http://codepeep.github.io/2017/03/Jekyll-pinglun/</link>
-        <guid isPermaLink="true">http://codepeep.github.io/2017/03/Jekyll-pinglun/</guid>
+        <link>http://localhost:4000/2017/03/Jekyll-pinglun/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/03/Jekyll-pinglun/</guid>
         
         <category>工具</category>
         
@@ -240,8 +407,8 @@ use mko2o;
 &lt;p&gt;转载请注明原地址，codepeep的博客：&lt;a href=&quot;http://codepeep.coding.me&quot;&gt;http://codepeep.coding.me&lt;/a&gt; 谢谢！&lt;/p&gt;
 </description>
         <pubDate>Mon, 16 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://codepeep.github.io/2017/01/hello-codepeep-s-Journey/</link>
-        <guid isPermaLink="true">http://codepeep.github.io/2017/01/hello-codepeep-s-Journey/</guid>
+        <link>http://localhost:4000/2017/01/hello-codepeep-s-Journey/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/hello-codepeep-s-Journey/</guid>
         
         <category>其他</category>
         
@@ -250,9 +417,9 @@ use mko2o;
     
       <item>
         <title>Markdown语法</title>
-        <description>&lt;h1 id=&quot;markdown-&quot;&gt;Markdown 常用语法及示例&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;markdown-常用语法及示例&quot;&gt;Markdown 常用语法及示例&lt;/h1&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;1. 斜体和粗体&lt;/h3&gt;
+&lt;h3 id=&quot;1-斜体和粗体&quot;&gt;1. 斜体和粗体&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 * 和 ** 表示斜体和粗体。&lt;/p&gt;
 
@@ -266,7 +433,7 @@ use mko2o;
 
 &lt;p&gt;这是 &lt;em&gt;斜体&lt;/em&gt;，这是 &lt;strong&gt;粗体&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;2. 分级标题&lt;/h3&gt;
+&lt;h3 id=&quot;2-分级标题&quot;&gt;2. 分级标题&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 === 表示一级标题，使用 — 表示二级标题。&lt;/p&gt;
 
@@ -282,13 +449,13 @@ use mko2o;
 
 &lt;p&gt;&lt;strong&gt;效果：&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;section-2&quot;&gt;这是一个一级标题&lt;/h1&gt;
+&lt;h1 id=&quot;这是一个一级标题&quot;&gt;这是一个一级标题&lt;/h1&gt;
 
-&lt;h2 id=&quot;section-3&quot;&gt;这是一个二级标题&lt;/h2&gt;
+&lt;h2 id=&quot;这是一个二级标题&quot;&gt;这是一个二级标题&lt;/h2&gt;
 
 &lt;p&gt;你也可以选择在行首加井号表示不同级别的标题 (H1-H6)，例如：# H1, ## H2, ### H3，#### H4。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-4&quot;&gt;3. 外链接&lt;/h3&gt;
+&lt;h3 id=&quot;3-外链接&quot;&gt;3. 外链接&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 [描述](链接地址) 为文字增加外链接。&lt;/p&gt;
 
@@ -302,7 +469,7 @@ use mko2o;
 
 &lt;p&gt;这是去往 &lt;a href=&quot;http://codepeep.github.io&quot;&gt;本人博客&lt;/a&gt; 的链接。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-5&quot;&gt;4. 无序列表&lt;/h3&gt;
+&lt;h3 id=&quot;4-无序列表&quot;&gt;4. 无序列表&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 *，+，- 表示无序列表。&lt;/p&gt;
 
@@ -322,7 +489,7 @@ use mko2o;
   &lt;li&gt;无序列表项 三&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;section-6&quot;&gt;5. 有序列表&lt;/h3&gt;
+&lt;h3 id=&quot;5-有序列表&quot;&gt;5. 有序列表&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用数字和点表示有序列表。&lt;/p&gt;
 
@@ -342,7 +509,7 @@ use mko2o;
   &lt;li&gt;有序列表项 三&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;section-7&quot;&gt;6. 文字引用&lt;/h3&gt;
+&lt;h3 id=&quot;6-文字引用&quot;&gt;6. 文字引用&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 &amp;gt; 表示文字引用。&lt;/p&gt;
 
@@ -358,7 +525,7 @@ use mko2o;
   &lt;p&gt;野火烧不尽，春风吹又生。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;section-8&quot;&gt;7. 行内代码块&lt;/h3&gt;
+&lt;h3 id=&quot;7-行内代码块&quot;&gt;7. 行内代码块&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 `代码` 表示行内代码块。&lt;/p&gt;
 
@@ -372,7 +539,7 @@ use mko2o;
 
 &lt;p&gt;让我们聊聊 &lt;code class=&quot;highlighter-rouge&quot;&gt;html&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h3 id=&quot;section-9&quot;&gt;8. 代码块&lt;/h3&gt;
+&lt;h3 id=&quot;8-代码块&quot;&gt;8. 代码块&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 四个缩进空格 表示代码块。&lt;/p&gt;
 
@@ -382,7 +549,7 @@ use mko2o;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;section-10&quot;&gt;9. 插入图像&lt;/h3&gt;
+&lt;h3 id=&quot;9-插入图像&quot;&gt;9. 插入图像&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;使用 ![描述](图片链接地址) 插入图像。&lt;/p&gt;
 
@@ -396,7 +563,7 @@ use mko2o;
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/2017-03-04/meinv.jpg&quot; alt=&quot;我的头像&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-11&quot;&gt;10. 加强的代码块&lt;/h3&gt;
+&lt;h3 id=&quot;10-加强的代码块&quot;&gt;10. 加强的代码块&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;支持四十一种编程语言的语法高亮的显示，行号显示。&lt;/p&gt;
 
@@ -410,11 +577,10 @@ $ sudo apt-get install vim-gnome
 
 &lt;p&gt;&lt;strong&gt;效果1：&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd
-$ sudo apt-get install vim-gnome
-&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;$ sudo apt-get install vim-gnome
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;section-12&quot;&gt;11. 表格支持&lt;/h3&gt;
+&lt;h3 id=&quot;11-表格支持&quot;&gt;11. 表格支持&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;写法示例：&lt;/strong&gt;&lt;/p&gt;
 
@@ -455,7 +621,7 @@ $ sudo apt-get install vim-gnome
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;html-&quot;&gt;12. Html 标签&lt;/h3&gt;
+&lt;h3 id=&quot;12-html-标签&quot;&gt;12. Html 标签&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;语法说明：&lt;/strong&gt;用 Html 写一个纵跨两行的表格：&lt;/p&gt;
 
@@ -497,8 +663,8 @@ $ sudo apt-get install vim-gnome
 
 </description>
         <pubDate>Mon, 21 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://codepeep.github.io/2016/11/markdownGranmar/</link>
-        <guid isPermaLink="true">http://codepeep.github.io/2016/11/markdownGranmar/</guid>
+        <link>http://localhost:4000/2016/11/markdownGranmar/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/markdownGranmar/</guid>
         
         <category>工具</category>
         
@@ -507,14 +673,14 @@ $ sudo apt-get install vim-gnome
     
       <item>
         <title>Markdown工具集</title>
-        <description>&lt;h3 id=&quot;markdown&quot;&gt;什么是 Markdown&lt;/h3&gt;
+        <description>&lt;h3 id=&quot;什么是-markdown&quot;&gt;什么是 Markdown&lt;/h3&gt;
 
 &lt;p&gt;　　Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：如您正在阅读的这篇文章。它使用简单的符号标记不同的标题，分割不同的段落，&lt;strong&gt;粗体&lt;/strong&gt; 或者 &lt;em&gt;斜体&lt;/em&gt; 某些文字.&lt;/p&gt;
 
 &lt;p&gt;　　很多产品的文档也是用markdown编写的，并且以“README.MD”的文件名保存在软件的目录下面。             &lt;br /&gt;
 　　&lt;/p&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;一些基本语法&lt;/h3&gt;
+&lt;h3 id=&quot;一些基本语法&quot;&gt;一些基本语法&lt;/h3&gt;
 
 &lt;p&gt;标题          &lt;br /&gt;
 H1 :# Header 1          &lt;br /&gt;
@@ -526,17 +692,17 @@ H6 :###### Header 6    &lt;br /&gt;
 链接 :&lt;a href=&quot;URL&quot;&gt;Title&lt;/a&gt;      &lt;br /&gt;
 加粗 :&lt;strong&gt;Bold&lt;/strong&gt;      &lt;br /&gt;
 斜体字 :&lt;em&gt;Italics&lt;/em&gt;       &lt;br /&gt;
-&lt;em&gt;删除线 :~~text~~        &lt;br /&gt;
+&lt;em&gt;删除线 :&lt;del&gt;text&lt;/del&gt;        &lt;br /&gt;
 段落 : 段落之间空一行         &lt;br /&gt;
 换行符 : 一行结束时输入两个空格         &lt;br /&gt;
 列表 :&lt;/em&gt; 添加星号成为一个新的列表项。        &lt;br /&gt;
 引用 :&amp;gt; 引用内容             &lt;br /&gt;
-内嵌代码 : &lt;code class=&quot;highlighter-rouge&quot;&gt;alert(&#39;Hello World&#39;);&lt;/code&gt;      &lt;br /&gt;
+内嵌代码 : &lt;code class=&quot;highlighter-rouge&quot;&gt;alert('Hello World');&lt;/code&gt;      &lt;br /&gt;
 画水平线 (HR) :——–&lt;/p&gt;
 
 &lt;p&gt;css 的大部分语法同样可以在 markdown 上使用，但不同的渲染器渲染出来的 markdown 内容样式也不一样，下面这些链接里面有 markdown 基本语法，你也可以在下面几个平台上尝试着写一些。&lt;/p&gt;
 
-&lt;h3 id=&quot;markdown-&quot;&gt;一些好用的 Markdown 编辑器&lt;/h3&gt;
+&lt;h3 id=&quot;一些好用的-markdown-编辑器&quot;&gt;一些好用的 Markdown 编辑器&lt;/h3&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -575,8 +741,8 @@ H6 :###### Header 6    &lt;br /&gt;
 
 </description>
         <pubDate>Sun, 20 Nov 2016 00:00:00 +0800</pubDate>
-        <link>http://codepeep.github.io/2016/11/markdownTool/</link>
-        <guid isPermaLink="true">http://codepeep.github.io/2016/11/markdownTool/</guid>
+        <link>http://localhost:4000/2016/11/markdownTool/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/11/markdownTool/</guid>
         
         <category>工具</category>
         

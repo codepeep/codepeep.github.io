@@ -6,16 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>[TP5仿糯米O2O平台]学习日志-Day02</title>
+  <title>[TP5仿糯米O2O平台-Day02]前端页面模块和后台页面模块的搭建</title>
   <meta name="description" content="今日学习要点：1）仿造糯米网搭建PC端前台首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="[TP5仿糯米O2O平台]学习日志-Day02">
+  <meta name="twitter:title" content="[TP5仿糯米O2O平台-Day02]前端页面模块和后台页面模块的搭建">
   <meta name="twitter:description" content="今日学习要点：1）仿造糯米网搭建PC端前台首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="[TP5仿糯米O2O平台]学习日志-Day02">
+  <meta property="og:title" content="[TP5仿糯米O2O平台-Day02]前端页面模块和后台页面模块的搭建">
   <meta property="og:description" content="今日学习要点：1）仿造糯米网搭建PC端前台首页html静态页面2）使用H-ui前端框架搭建PC端后台管理html静态页面">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
@@ -24,8 +24,8 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://codepeep.github.io/2017/04/mko2o-tp5-day02/">
-  <link rel="alternate" type="application/rss+xml" title="小码吱" href="http://codepeep.github.io/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/2017/04/mko2o-tp5-day02/">
+  <link rel="alternate" type="application/rss+xml" title="小码吱" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
 
@@ -148,7 +148,7 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">[TP5仿糯米O2O平台]学习日志-Day02</h1>
+    <h1 class="post-title">[TP5仿糯米O2O平台-Day02]前端页面模块和后台页面模块的搭建</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
       <time datetime="2017-04-06 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-06</time>  
@@ -159,11 +159,11 @@
   </header>
 
   <section class="post">
-    <h3 id="section">今日学习要点：</h3>
+    <h3 id="今日学习要点">今日学习要点：</h3>
 <p>1）仿造糯米网搭建PC端前台首页html静态页面<br />
 2）使用H-ui前端框架搭建PC端后台管理html静态页面</p>
 
-<h3 id="pchtml">1、仿造糯米网搭建PC端前台首页html静态页面</h3>
+<h3 id="1仿造糯米网搭建pc端前台首页html静态页面">1、仿造糯米网搭建PC端前台首页html静态页面</h3>
 <p>仿造html页面的方式非常多，但是主要分为两种方式吧，一是自己写，二是利用仿站工具把相关资源下载，再稍作修改即可。自己写的话对于前端大神来说都是小case，但是对于小白来说那就需要花些时间先学习HTML、CSS、JS和PS相关的基础知识了，关于这些前端知识推荐一个非常好的自学网站：<a href="http://www.imooc.com" target="_blank">慕课网</a>，像我这样的菜鸟就是在慕课网学习的，里面绝大部分视频都是免费的，都是一些大公司的大牛实战经验讲解，而且制作精良。再说第二种方式：用仿站工具，防站工具我用过两款，第一款是大名鼎鼎的<a href="http://pan.baidu.com/s/1eRBa8k6" target="_blank">Teleport Ultra</a>，但是用它下载的html文件会自动加上他自己的一些标签；第二款是国内某个大神写的，叫<a href="http://pan.baidu.com/s/1pLyNknD" target="_blank">仿站绿色小工具</a>，功能比较少，但是简单实用，基本能满足你想把图片、js、css和html一键下载的需求。
 当然如果你的目的是像我一样主要想学习TP5框架，那么我很乐意分享我的前端静态资源，<a href="http://pan.baidu.com/s/1o80Rdhw" target="_blank">猛戳下载呗</a> 。为了熟练使用linux命令，所以我尽可能的使用命令进行文件操作，大家如果习惯直接复制粘贴也可以。</p>
 
@@ -238,7 +238,7 @@ class User extends Controller {
 <p>访问http://127.0.0.1/mko2o/public/index/iuser/register ，就可以正常访问到PC端注册页了，效果如下：<br />
 <img src="/images/posts/2017-04-06/pc_register.jpg" alt="TP5仿糯米网O2O系统之PC端注册页" /></p>
 
-<h3 id="h-uipchtml">2、使用H-ui前端框架搭建PC端后台管理html静态页面</h3>
+<h3 id="2使用h-ui前端框架搭建pc端后台管理html静态页面">2、使用H-ui前端框架搭建PC端后台管理html静态页面</h3>
 <p>H-ui是国产的轻量级前端框架，简单免费，兼容性好。你可以选择使用我在静态资源中提供的版本，也可以到<a href="http://www.h-ui.net/H-ui.admin.shtml" target="_blank">H-ui官方网站</a>下载最新的版本H-ui.Admin。接下来就可以开始搭建后台管理页面啦。</p>
 
 <p>1）复制H-ui核心文件到项目static目录下</p>
@@ -296,10 +296,15 @@ class Index extends Controller {
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2017/04/mko2o-tp5-day01/" data-toggle="tooltip" data-placement="top" title="[TP5仿糯米O2O平台]学习日志-Day01">上一篇：  <span>[TP5仿糯米O2O平台]学习日志-Day01</span>
+            <a href="/2017/04/mko2o-tp5-day01/" data-toggle="tooltip" data-placement="top" title="[TP5仿糯米O2O平台-Day01]功能分析和表的设计">上一篇：  <span>[TP5仿糯米O2O平台-Day01]功能分析和表的设计</span>
             </a>
         </li>
         
+        
+        <li class="next">
+            <a href="/2017/04/mko2o-tp5-day03/" data-toggle="tooltip" data-placement="top" title="[TP5仿糯米O2O平台-Day03]后台生活服务分类模块的实现">下一篇：  <span>[TP5仿糯米O2O平台-Day03]后台生活服务分类模块的实现</span>
+            </a>
+        </li>
         
     </ul>
 </section>

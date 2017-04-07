@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Hello Codepeep’s Journey</title>
-  <meta name="description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，我的 Jekyll 是 3.3.1 版本。">
+  <title>[TP5仿糯米O2O平台-Day03]后台生活服务分类模块的实现</title>
+  <meta name="description" content="今日学习要点：1）分类的添加，并使用validate校验机制2）分页机制处理列表分页功能">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Hello Codepeep’s Journey">
-  <meta name="twitter:description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，我的 Jekyll 是 3.3.1 版本。">
+  <meta name="twitter:title" content="[TP5仿糯米O2O平台-Day03]后台生活服务分类模块的实现">
+  <meta name="twitter:description" content="今日学习要点：1）分类的添加，并使用validate校验机制2）分页机制处理列表分页功能">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Hello Codepeep’s Journey">
-  <meta property="og:description" content="　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，我的 Jekyll 是 3.3.1 版本。">
+  <meta property="og:title" content="[TP5仿糯米O2O平台-Day03]后台生活服务分类模块的实现">
+  <meta property="og:description" content="今日学习要点：1）分类的添加，并使用validate校验机制2）分页机制处理列表分页功能">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2017/01/hello-codepeep-s-Journey/">
+  <link rel="canonical" href="http://localhost:4000/2017/04/mko2o-tp5-day03/">
   <link rel="alternate" type="application/rss+xml" title="小码吱" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -148,10 +148,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">Hello Codepeep’s Journey</h1>
+    <h1 class="post-title">[TP5仿糯米O2O平台-Day03]后台生活服务分类模块的实现</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2017-01-16 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-01-16</time>  
+      <time datetime="2017-04-07 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-04-07</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -159,12 +159,161 @@
   </header>
 
   <section class="post">
-    <p>　　经过各种找资料，踩过各种坑，终于使用 Jekyll 搭建个人博客初步完成了，我的 Jekyll 是 3.3.1 版本。</p>
+    <h3 id="今日学习要点">今日学习要点：</h3>
+<p>1）分类的添加，并使用validate校验机制<br />
+2）分页机制处理列表分页功能</p>
 
-<h3 id="codepeeps-journey">Codepeep’s Journey：</h3>
-<p><img src="/images/posts/2017-01-16/1.jpg" alt="" /></p>
+<p><img src="/images/posts/2017-04-07/fenleitianjia.jpg" alt="生活服务分类添加效果图" /></p>
 
-<p>转载请注明原地址，codepeep的博客：<a href="http://codepeep.coding.me">http://codepeep.coding.me</a> 谢谢！</p>
+<h3 id="1生活服务分类的添加">1、生活服务分类的添加</h3>
+
+<p>1）大家先复制静态资源中静态资源/后端html代码/主后台模板/category下的html代码到项目路径视图层phpStudy/WWW/mko2o/application/admin/view/category下，其中add.html即为分类添加页面，index.html为分类列表展示页面。</p>
+
+<p>2）然后在控制层phpStudy/WWW/mko2o/application/admin/controller路径下新建Category.php，并实现模版的加载和业务逻辑代码，代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+namespace app\admin\controller;
+use think\Controller;
+
+/**
+ *  后台首页模块
+ */
+class Category extends Controller {
+
+    private $obj;
+    public function _initialize(){
+	$this-&gt;obj = model('Category');
+    }
+
+    //分类列表
+    public function index(){
+       $categorys = $this-&gt;obj-&gt;getFirstCategorys();
+       return $this-&gt;fetch('', [
+	   'categorys' =&gt; $categorys
+       ]);
+    }
+
+    //添加分类方法
+    public function add(){
+	$parentId = input('get.parent_id', 0, 'intval');
+	$categorys = $this-&gt;obj-&gt;getNormalFirstCategorys($parentId);
+	return $this-&gt;fetch('', [
+	    'categorys' =&gt; $categorys
+	]);
+    }
+
+    //分类保存方法
+    public function save(){
+	$data = input('post.');
+	$validate = validate('Category');	/*实例化Category校验类*/
+	if(!$validate-&gt;scene('add')-&gt;check($data)){	/*场景校验*/
+	    $this-&gt;error($validate-&gt;getError());	/*校验信息反馈*/
+	}
+	//把$data提交到model层
+	$res = $this-&gt;obj-&gt;add($data);
+	if($res){
+	    $this-&gt;success('新增成功');
+	}
+
+    }
+
+}
+</code></pre>
+</div>
+
+<p>上面的代码是控制层的逻辑，为了实现程序的高度复用了良好的MVC开发模式，我们需要新建对应的Model层用来和数据库打交道，这时候我们可以在phpStudy/WWW/mko2o/application/common/model下新建Category.php的model类，代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+namespace app\common\model;
+use think\Model;
+/**
+ * 分类model类
+ */
+class Category extends Model
+{
+    public function add($data){
+	$data['status'] = 1;
+	return $this-&gt;save($data);
+    }
+
+    //新增分类页面获取正常一级分类
+    public function getNormalFirstCategorys(){
+	$where = [
+	    'status' =&gt; 1,
+	    'parent_id' =&gt; 0
+	];
+	$order = [
+	    'id' =&gt; 'desc'
+	];
+	$result = $this-&gt;where($where)-&gt;order($order)-&gt;select();
+	return $result;
+    }
+
+    //列表页获取一级分类
+    public function getFirstCategorys($parentId=0){
+	$where = [
+	    'status' =&gt; ['neq', -1],
+	    'parent_id' =&gt; $parentId
+	];
+	$order = [
+	    'id' =&gt; 'desc'
+	];
+	$result = $this-&gt;where($where)-&gt;order($order)-&gt;paginate(2);
+	return $result;
+    }
+
+}
+</code></pre>
+</div>
+
+<p>细心的吱友可能会发现，控制层中的save()方法中实现了TP5自带的validate校验机制，那么这个校验是如何写的呢，TP5官网的详细说明在这里，<a href="http://www.kancloud.cn/manual/thinkphp5/129322" target="_blank">TP5校验</a>，我这边是在phpStudy/WWW/mko2o/application/admin/validate/下新建Category.php验证类，具体的实现代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;?php
+namespace app\admin\validate;
+use think\Validate;
+/**
+ * Desc:Category验证类
+ */
+class Category extends Validate{
+
+    /**规则设置**/
+    protected $rule = [
+	['name', 'require|max:50', '分类名必须填写|分类名不能超过50个字符'],
+	['parent_id', 'number'],
+	['id', 'number'],
+	['status', 'number|in:-1,0,1', '状态必须是数字|状态范围不合法'],
+	['listorder','number']
+    ];
+
+    /**场景设置**/
+    protected $scene = [
+	'add' =&gt; ['name', 'parent_id'],//添加
+	'listorder' =&gt; ['id', 'parent_id']//排序
+    ];
+
+}
+</code></pre>
+</div>
+
+<h3 id="2分页机制处理列表分页功能">2、分页机制处理列表分页功能</h3>
+<p>分类机制的实现是用paginate()代替select()，方法即可，然后html页面中调用render()，例如我是在index.html中增加一个div，美化样式，然后div里面填充$categorys-&gt;render()；具体的代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div class="cl pd-5 bg-1 bk-gray mt-20 tp-fenye"&gt;{$categorys-&gt;render()}&lt;/div&gt;
+
+.tp-fenye .pagination li{
+    display: inline;
+    padding: 10px;
+}
+.pagination .active{
+    color: red;
+}
+.pagination .disabled{
+    color: #888888;
+}
+</code></pre>
+</div>
+
+<p>转载请注明原地址，codepeep的博客：<a href="http://codepeep.github.io">http://codepeep.github.io</a> 谢谢！</p>
 
 
   </section>
@@ -174,15 +323,10 @@
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2016/11/markdownGranmar/" data-toggle="tooltip" data-placement="top" title="Markdown语法">上一篇：  <span>Markdown语法</span>
+            <a href="/2017/04/mko2o-tp5-day02/" data-toggle="tooltip" data-placement="top" title="[TP5仿糯米O2O平台-Day02]前端页面模块和后台页面模块的搭建">上一篇：  <span>[TP5仿糯米O2O平台-Day02]前端页面模块和后台页面模块的搭建</span>
             </a>
         </li>
         
-        
-        <li class="next">
-            <a href="/2017/03/Jekyll-pinglun/" data-toggle="tooltip" data-placement="top" title="多说评论即将关闭，如何给你的Jekyll加上其他评论，并且支持导入原来的多说评论">下一篇：  <span>多说评论即将关闭，如何给你的Jekyll加上其他评论，并且支持导入原来的多说评论</span>
-            </a>
-        </li>
         
     </ul>
 </section>
